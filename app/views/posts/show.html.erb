@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <% if @post.post_image.attached? %>
+    <image src="<%=(url_for(@post.post_image))%>">
+  <% else %>
+    <h1>Hello</h1>
+  <% end %>
+  <br>
+  <strong><%= @post.account.username %>:</strong> <%= @post.description %>
+</p>
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>
