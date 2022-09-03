@@ -1,6 +1,6 @@
 class Account < ApplicationRecord
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timattr_accessible :name, :email, :imageeoutable, :trackable and :omniauthable
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   mount_uploader :avatar, AvatarUploader
   
   devise :database_authenticatable, :registerable,
