@@ -12,9 +12,12 @@
   <tbody>
     <% @comments.each do |comment| %>
       <tr>
-        <td><%= link_to 'Show', post_comment_path(comment) %></td>
-        <td><%= link_to 'Edit', edit_post_comment_path(comment) %></td>
-        <td><%= link_to 'Destroy', post_comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <strong><%= comment.account_id %>:</strong> <%= comment.user_comment %>
+        <br>
+
+      </tr>
+      <tr>
+      
       </tr>
     <% end %>
   </tbody>
