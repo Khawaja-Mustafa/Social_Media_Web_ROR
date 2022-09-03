@@ -9,10 +9,21 @@ class Account < ApplicationRecord
   # account can have many posts, and if account destroyed than post would also be destroyed
   has_many :posts, dependent: :destroy;
   has_one_attached :avatar
+  
   # for comments
   has_many :comments
+
   # For Likes
   has_many :likes, dependent: :destroy
+
+  # For friends
+  has_many :friendships
+  has_many :friends, :through => :friendships
+  has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
+  has_many :inverse_friends, :through => :inverse_friendships, :source => :account
+
+
+
 
   # Avatar uploading
   # User Avatar Validation
