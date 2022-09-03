@@ -1,4 +1,4 @@
 <p id="notice"><%= notice %></p>
-
+ <strong><%= post.account.@comment.username %>:</strong> <%= post.@comment.user_comment %>
 <%= link_to 'Edit', edit_post_comment_path(@comment) %> |
 <%= link_to 'Back', post_comments_path %>
