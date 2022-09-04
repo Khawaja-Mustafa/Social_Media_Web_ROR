@@ -34,19 +34,9 @@ gem 'mini_magick'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 gem 'pg', '~> 1.4', '>= 1.4.3'
+
 # Sidekiq uses threads to handle many jobs at the same time in the same process
 gem 'sidekiq', '~> 6.1.3'
-gem 'sidekiq-cron'
-
-# Figaro makes it easy to manage your environment variables using an application.yml file 
-gem 'figaro'
-
-
-
-
-
-
-
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
