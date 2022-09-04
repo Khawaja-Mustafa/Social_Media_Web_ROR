@@ -12,7 +12,7 @@
               <ul class="dropdown-menu">
                 <% if current_account.id == post.account.id%>
                   <li><%= link_to 'Edit', edit_post_path(post), class:"dropdown-item" %></li>
-                  <li><%= button_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class:"dropdown-item" %></li>
+                  <li><%= button_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, :remote => true, :class => 'delete_post', class:"dropdown-item"%></li>
                   <li><a class="dropdown-item" href="#">Something else here</a></li>
                 <%else%>
 
