@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 <p>
   <% if @post.post_image.attached? %>
-    <image src="<%=(url_for(@post.post_image))%>">
+    <image src="<%=(url_for(@post.post_image))%>" width="500" height="300" crop="fill">
   <% else %>
     <h1>Hello</h1>
   <% end %>

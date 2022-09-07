@@ -27,7 +27,9 @@
       <tr>
         <td> 
             <% if post.post_image.attached? %>
-                <%= link_to image_tag(post.post_image), post%>
+            <!-- need to find a way to resize the image while keeping it clickable -->
+              <%link_to image_tag(post.post_image), post%>
+              <%= image_tag(post.post_image, {:style => "height:400; width:550px; crop:fill;"})%>
             <% else %>
               <h1>Hello</h1>
             <% end %>
