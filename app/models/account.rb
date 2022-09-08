@@ -23,8 +23,6 @@ class Account < ApplicationRecord
   has_many :inverse_friends, :through => :inverse_friendships, :source => :account
 
 
-
-
   # Avatar uploading
   # User Avatar Validation
   validates_integrity_of  :avatar
