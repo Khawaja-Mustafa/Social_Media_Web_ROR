@@ -8,7 +8,7 @@
 	  <% for friendship in @account.friendships %>
 	    <li>
 	      <%=friendship.friend.username %>
-	      (<%= link_to "remove", friendship, :method => :delete %>)
+	      (<%= button_to "remove", friendship, :method => :delete %>)
 	    </li>
 	  <% end %>
 	</ul>
