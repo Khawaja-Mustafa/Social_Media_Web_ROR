@@ -3,7 +3,7 @@
 	<%= @account.username%>
 	<br>
 	<%= @account.email%>
-	<h2>Friends</h2>
+	<h2>Friends List</h2>
 	<ul>
 	  <% for friendship in @account.friendships %>
 	    <li>
@@ -12,14 +12,14 @@
 	    </li>
 	  <% end %>
 	</ul>
-	<p><%= link_to "Find Friends", accounts_path %></p>
 
-	<h2>Friended by Users</h2>
+	<h2>Followers</h2>
 	<ul>
 	  <% for account in @account.inverse_friends %>
 	    <li><%=h account.username %></li>
 	  <% end %>
 	</ul>
+
 <%else%>
 	<%= @account.username%>
 	<br>
