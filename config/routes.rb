@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
   
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+  resources :friendships
+  # resources :rooms
+  resources :rooms do
+    resources :messages
+  end
+
   # devise_for :accounts
   devise_for :accounts, controllers: {
         sessions: 'accounts/sessions'

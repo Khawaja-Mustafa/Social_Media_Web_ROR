@@ -18,7 +18,7 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 4.0'
+gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -38,6 +38,13 @@ gem 'pg', '~> 1.4', '>= 1.4.3'
 # Sidekiq uses threads to handle many jobs at the same time in the same process
 gem 'sidekiq', '~> 6.1.3'
 
+gem "nifty-generators", :group => :development
+
+gem 'rails-erd', group: :development
+gem 'graphviz', '~> 1.2', '>= 1.2.1'
+
+# For active admin functionality
+gem 'activeadmin'
 
 
 # Reduces boot times through caching; required in config/boot.rb
@@ -69,3 +76,8 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'mocha', group: :test
+
+gem "turbo-rails", "~> 1.1"
+
+gem "stimulus-rails", "~> 1.1"
+

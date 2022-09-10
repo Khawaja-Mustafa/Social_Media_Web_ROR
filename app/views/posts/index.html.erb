@@ -3,9 +3,11 @@
   <table style=" margin-left: auto; margin-right: auto;">
     <tbody>
       <tr>
-        <td>
+        <td class="align-left">
           <div class="container">
             <%= post.account.username %>
+        </td>
+        <td class="align-left">
               <div class="btn-group dropend" style="background: none; color: black; border: none;">
               <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
               </button>
@@ -36,13 +38,7 @@
         </td>
       </tr>
       <tr>
-        <td>
-          <strong><%= post.account.username %>:</strong> <%= post.description %>
-        </td>
-      </tr>
-      
-      <tr>
-        <td>
+        <td class="align-left">
           <% pre_like = post.likes.find { |like| like.account_id == current_account.id}%>
             <% if pre_like %>
               <%= button_to "/posts/#{post.id}/likes/#{pre_like.id}", class:"btn btn-block btn-outline-primary", method: :delete do %>
@@ -52,14 +48,20 @@
               <%= button_to post_likes_path(post.id), class:"btn btn-block btn-light border-primary" , method: :post do%>
                 <i class="fa fa-thumbs-up">Like</i>
             <% end %>
-          <%end%>
+          <% end %>
             <%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%>
         </td>
       </tr>
+      <tr>
+        <td class="align-left">
+          <strong><%= post.account.username %>:</strong> <%= post.description %>
+        </td>
+      </tr>
+      
+      
     <% end %>
     </tbody>
-    <br><br>
+    <br>
   </table>
-  <br><br><br><br>
 
 

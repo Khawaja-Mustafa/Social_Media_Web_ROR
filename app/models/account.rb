@@ -28,6 +28,16 @@ class Account < ApplicationRecord
   validates_integrity_of  :avatar
   validates_processing_of :avatar
  
+
+  # chatting function
+  validates_uniqueness_of :username
+  scope :all_except, ->(account) { where.not(id: account) }
+  after_create_commit { broadcast_append_to "accounts" }
+  has_many :messages
+
+
+
+  
   private
     def avatar_size_validation
       errors[:avatar] << "should be less than 500KB" if avatar.size > 0.5.megabytes
