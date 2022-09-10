@@ -1,0 +1,30 @@
+<h1>Accounts#show</h1>
+<% if current_account == @account%>
+	<%= @account.username%>
+	<br>
+	<%= @account.email%>
+	<h2>Friends</h2>
+	<ul>
+	  <% for friendship in @account.friendships %>
+	    <li>
+	      <%=friendship.friend.username %>
+	      (<%= link_to "remove", friendship, :method => :delete %>)
+	    </li>
+	  <% end %>
+	</ul>
+	<p><%= link_to "Find Friends", accounts_path %></p>
+
+	<h2>Friended by Users</h2>
+	<ul>
+	  <% for account in @account.inverse_friends %>
+	    <li><%=h account.username %></li>
+	  <% end %>
+	</ul>
+<%else%>
+	<%= @account.username%>
+	<br>
+	<%= @account.email%>
+	<br>
+	<%= button_to "Add Friend", friendships_path(:friend_id => @account), :method => :post %>
+<%end%>
+

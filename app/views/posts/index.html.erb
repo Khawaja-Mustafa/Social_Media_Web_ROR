@@ -5,7 +5,7 @@
       <tr>
         <td class="align-left">
           <div class="container">
-            <%= post.account.username %>
+            <%= link_to post.account.username, account_path(post.account_id) %>
         </td>
         <td class="align-left">
               <div class="btn-group dropend" style="background: none; color: black; border: none;">
