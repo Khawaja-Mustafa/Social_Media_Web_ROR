@@ -3,16 +3,22 @@
 	<%= @account.username%>
 	<br>
 	<%= @account.email%>
-	<h2>Friends List</h2>
-	<ul>
-	  <% for friendship in @account.friendships %>
-	    <li>
-	      <%=friendship.friend.username %>
-	      (<%= button_to "remove", friendship, :method => :delete %>)
-	    </li>
-	  <% end %>
-	</ul>
-
+	<br>
+	<table class="center">
+		<tr>
+			<th><h2>Friends List</h2></th>
+		</tr>
+		<tr>
+			<% for friendship in @account.friendships %>
+			<td>
+				<%=friendship.friend.username %>
+			</td>
+			<td>
+				<%= button_to "remove", friendship, :method => :delete %>
+			</td>
+			<% end %>
+		</tr>
+	</table>
 	<h2>Followers</h2>
 	<ul>
 	  <% for account in @account.inverse_friends %>
@@ -25,6 +31,10 @@
 	<br>
 	<%= @account.email%>
 	<br>
-	<%= button_to "Add Friend", friendships_path(:friend_id => @account), :method => :post %>
+	<% if friendship == @account%>
+		<%= button_to "Friend Added", friendships_path(:friend_id => @account), :method => :post %>
+	<%else%>
+		<%= button_to "Add Friend", friendships_path(:friend_id => @account), :method => :post %>
+	<%end%>
 <%end%>
 
