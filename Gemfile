@@ -46,6 +46,8 @@ gem 'graphviz', '~> 1.2', '>= 1.2.1'
 # For active admin functionality
 gem 'activeadmin'
 
+# Simple authorization solution for Rails. All permissions are stored in a single location.
+gem 'cancancan', '~> 3.4'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
