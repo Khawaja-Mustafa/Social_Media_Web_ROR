@@ -19,11 +19,14 @@
                             </button>
                             <ul class="dropdown-menu">
                               <% if current_account.id == post.account.id%>
+                                <li><%= link_to 'Show', post_path(post), class:"dropdown-item" %></li>
                                 <li><%= link_to 'Edit', edit_post_path(post), class:"dropdown-item" %></li>
-                                <li><%= button_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, :remote => true, :class => 'delete_post', class:"dropdown-item"%></li>
+                                <li><%= button_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' }, :remote => true, :class => 'delete_post', class:"dropdown-item"%></li>
                                 <li><a class="dropdown-item" href="#">Something else here</a></li>
                               <%else%>
-
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
                                 <!-- Have to add something which can be used to hide post, or goto post, block user -->
                                 
                               <%end%>

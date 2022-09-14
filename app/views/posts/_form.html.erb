@@ -1,6 +1,4 @@
-<div class="text-center">
-  <br>
-  <br>
+<div class="p-3 m-3 d-inline-block">
     <%= form_with(model: post, local: true) do |form| %>
       <% if post.errors.any? %>
         <div id="error_explanation">
@@ -14,18 +12,18 @@
         </div>
       <% end %>
     <div class="mb-3">
-      <%= form.label :description, class:"form-label" %>
-      <%= form.text_field :description, class:"form-control", placeholder:"description" %>
+      <% form.label :description, class:"form-label" %>
+      <%= form.text_field :description, class:"form-control", placeholder:"Description" %>
     </div>
 
     <div class="mb-3">
-      <%= form.label "Image", for:"formfile", class:"form-label" %>
+      <% form.label "Image", for:"formfile", class:"form-label" %>
       <%= form.file_field :post_image, class:"form-control", type:"file", id: "formfile" %> <br>
     </div>
 
     <div class="actions">
-        <%= form.submit %>
+        <%= form.submit "Submit Post", class: 'btn btn-outline-dark' %>|<%= link_to 'Back', posts_path, class:"btn btn-outline-danger"%>
     </div>
-      <br> 
+      <br>
     <% end %>
 </div>
