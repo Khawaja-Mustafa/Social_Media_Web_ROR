@@ -1,5 +1,6 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
-  
   devise_for :accounts
 
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -10,7 +11,6 @@ Rails.application.routes.draw do
     resources :messages
   end
 
-
   resources :posts do
     resources :comments
   end
@@ -19,19 +19,16 @@ Rails.application.routes.draw do
   resources :posts do
     resources :likes
   end
-  
-   # get 'accounts/show'
+
+  # get 'accounts/show'
   resources :accounts
 
   root to: 'public#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-
   namespace :api do
     namespace :v1 do
-      resources :accounts, only: [:index, :show, :create]
+      resources :accounts, only: %i[index show create]
     end
   end
-
-  
 end

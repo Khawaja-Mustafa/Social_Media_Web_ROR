@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -38,10 +40,10 @@ gem 'pg', '~> 1.4', '>= 1.4.3'
 # Sidekiq uses threads to handle many jobs at the same time in the same process
 gem 'sidekiq', '~> 6.1.3'
 
-gem "nifty-generators", :group => :development
+gem 'nifty-generators', group: :development
 
-gem 'rails-erd', group: :development
 gem 'graphviz', '~> 1.2', '>= 1.2.1'
+gem 'rails-erd', group: :development
 
 # For active admin functionality
 gem 'activeadmin'
@@ -49,18 +51,21 @@ gem 'activeadmin'
 # Simple authorization solution for Rails. All permissions are stored in a single location.
 gem 'cancancan', '~> 3.4'
 
+# RuboCop is a Ruby code style checking and code formatting tool. It aims to enforce the community-driven Ruby Style Guide.
+gem 'rubocop', '~> 1.36'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
 end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
   gem 'listen', '~> 3.2'
+  gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
@@ -75,11 +80,10 @@ group :test do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'mocha', group: :test
 
-gem "turbo-rails", "~> 1.1"
+gem 'turbo-rails', '~> 1.1'
 
-gem "stimulus-rails", "~> 1.1"
-
+gem 'stimulus-rails', '~> 1.1'

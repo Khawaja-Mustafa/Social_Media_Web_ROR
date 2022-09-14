@@ -1,67 +1,194 @@
-<p id="notice"><%= notice %></p>
-  <% @posts.each do |post| %> 
-  <table style=" margin-left: auto; margin-right: auto;">
-    <tbody>
-      <tr>
-        <td class="align-left">
-          <div class="container">
-            <%= link_to post.account.username, account_path(post.account_id) %>
-        </td>
-        <td class="align-left">
-              <div class="btn-group dropend" style="background: none; color: black; border: none;">
-              <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-              </button>
-              <ul class="dropdown-menu">
-                <% if current_account.id == post.account.id%>
-                  <li><%= link_to 'Edit', edit_post_path(post), class:"dropdown-item" %></li>
-                  <li><%= button_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, :remote => true, :class => 'delete_post', class:"dropdown-item"%></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
-                <%else%>
+<main class="main-container">
+  <section class="content-container">
+      <div class="content">
+        <p id="notice"><%= notice %></p>
+          <div class="stories">
+            Have to add a story functionality
+          </div>
+          <% @posts.each do |post| %>
+          <div class="posts">
+            <article class="post">
+                  <div class="post__header">
+                      <div class="post__profile">
+                        <a class="post__avatar"> <img src="assets/default-user.png" alt="User Picture"></a>
+                          <%= link_to post.account.username, account_path(post.account_id), class:"post__user"%>
+                      </div>
+                      <div class="post__more-options">
+                          <div class="btn-group dropend" style="background: none; color: black; border: none;">
+                            <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            </button>
+                            <ul class="dropdown-menu">
+                              <% if current_account.id == post.account.id%>
+                                <li><%= link_to 'Edit', edit_post_path(post), class:"dropdown-item" %></li>
+                                <li><%= button_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, :remote => true, :class => 'delete_post', class:"dropdown-item"%></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                              <%else%>
 
-                  <!-- Have to add something which can be used to hide post, or goto post, block user -->
+                                <!-- Have to add something which can be used to hide post, or goto post, block user -->
+                                
+                              <%end%>
+                            </ul>
+                        </div>
+                      </div>
+                  </div>
+                  <div class="post__content">
+                    <div class="post__medias">
+                        <% if post.post_image.attached? %>
+                          <!-- need to find a way to resize the image while keeping it clickable -->
+                            <%link_to image_tag(post.post_image), post, class:"post__media"%>
+                            <%= image_tag(post.post_image, {:style => "height:389; width:612px; crop:fill;"})%>
+                        <% else %>
+                          <h1>Hello</h1>
+                        <% end %>
+                    </div> 
+                  </div>
                   
-                <%end%>
-              </ul>
+                  <div class="post__footer">
+                    <div class="post__buttons">
+                        <% pre_like = post.likes.find { |like| like.account_id == current_account.id}%>
+                          <% if pre_like %>
+                            <%= button_to "/posts/#{post.id}/likes/#{pre_like.id}", class:"post__button", method: :delete do %>
+                              <i class="fa fa-thumbs-up liked">Liked</i>
+                            <%end%>
+                          <%else%>
+                            <%= button_to post_likes_path(post.id), class:"post__button", method: :post do%>
+                              <i class="fa fa-thumbs-up">Like</i>
+                          <% end %>
+                        <% end %>
+                        <button class="post__button">Comment</button>
+                        <button class="post__button">Share</button>
+                      <div class="post__indicators">
+                      </div>
+                        <button class="post__button post__button--align-right">bookmark</button>
+                    </div>
+                    <div class="post__infos">
+                      <div class="post__likes">
+                        <%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%>
+                      </div>
+                      <div class="post__description">
+                        <span>
+                          <%= link_to post.account.username, account_path(post.account_id), class:"post__name--underline"%>
+                          <%= post.description %>
+                        </span>
+                      </div>
+                      <span class="post__date-time"><%= post.created_at %></span>
+                    </div>
+                  </div>
+                  <br>
+            </article>
+            <% end %>
+          </div>
+      </div>
+      <section class="side-menu">
+        <div class="side-menu__user-profile">
+            <a href="#" class="side-menu__user-avatar">
+               <img src="assets/default-user.png" alt="User Picture">
+            </a>
+            <div class="side-menu__user-info">
+               <%= link_to current_account.username, account_path(current_account)%>
+               <span><%= current_account.username%></span>
+            </div>
+            <button class="side-menu__user-button">Switch</button>
+        </div>
+        <div class="side-menu__suggestions-section">
+          <div class="side-menu__suggestions-header">
+            <h2>Suggestions for You</h2>
+            <button>See All</button>
+          </div>
+          <div class="side-menu__suggestions-content">
+            <div class="side-menu__suggestion">
+              <a href="#" class="side-menu__suggestion-avatar">
+                <img src="assets/default-user.png" alt="User Picture">
+              </a>
+              <div class="side-menu__suggestion-info">
+                <a href="#">usernick16</a>
+                <span>Followed by user1, user2 and 9 others</span>
+              </div>
+              <button class="side-menu__suggestion-button">Follow</button>
+            </div>
+            <div class="side-menu__suggestion">
+              <a href="#" class="side-menu__suggestion-avatar">
+                <img src="assets/default-user.png" alt="User Picture">
+              </a>
+              <div class="side-menu__suggestion-info">
+                <a href="#">usernick17</a>
+                <span>Followed by user1, user2 and 3 others</span>
+              </div>
+              <button class="side-menu__suggestion-button">Follow</button>
+            </div>
+            <div class="side-menu__suggestion">
+              <a href="#" class="side-menu__suggestion-avatar">
+                <img src="assets/default-user.png" alt="User Picture">
+              </a>
+              <div class="side-menu__suggestion-info">
+                <a href="#">usernick18</a>
+                <span>Followed by user1 and 9 others</span>
+              </div>
+              <button class="side-menu__suggestion-button">Follow</button>
+            </div>
+            <div class="side-menu__suggestion">
+              <a href="#" class="side-menu__suggestion-avatar">
+                <img src="assets/default-user.png" alt="User Picture">
+              </a>
+              <div class="side-menu__suggestion-info">
+                <a href="#">usernick19</a>
+                <span>Followed by user1 and 3 others</span>
+              </div>
+              <button class="side-menu__suggestion-button">Follow</button>
+            </div>
+            <div class="side-menu__suggestion">
+              <a href="#" class="side-menu__suggestion-avatar">
+                <img src="assets/default-user.png" alt="User Picture">
+              </a>
+              <div class="side-menu__suggestion-info">
+                <a href="#">usernick20</a>
+                <span>Followed by user1 and 6 others</span>
+              </div>
+              <button class="side-menu__suggestion-button">Follow</button>
             </div>
           </div>
-        </td>
-      </tr>
-      <tr>
-        <td> 
-            <% if post.post_image.attached? %>
-            <!-- need to find a way to resize the image while keeping it clickable -->
-              <%link_to image_tag(post.post_image), post%>
-              <%= image_tag(post.post_image, {:style => "height:400; width:550px; crop:fill;"})%>
-            <% else %>
-              <h1>Hello</h1>
-            <% end %>
-        </td>
-      </tr>
-      <tr>
-        <td class="align-left">
-          <% pre_like = post.likes.find { |like| like.account_id == current_account.id}%>
-            <% if pre_like %>
-              <%= button_to "/posts/#{post.id}/likes/#{pre_like.id}", class:"btn btn-block btn-outline-primary", method: :delete do %>
-                <i class="fa fa-thumbs-up liked">Liked</i>
-              <%end%>
-            <%else%>
-              <%= button_to post_likes_path(post.id), class:"btn btn-block btn-light border-primary" , method: :post do%>
-                <i class="fa fa-thumbs-up">Like</i>
-            <% end %>
-          <% end %>
-            <%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%>
-        </td>
-      </tr>
-      <tr>
-        <td class="align-left">
-          <strong><%= post.account.username %>:</strong> <%= post.description %>
-        </td>
-      </tr>
-      
-      
-    <% end %>
-    </tbody>
-    <br>
-  </table>
-
-
+          </div>
+        </div>
+        <div class="side-menu__footer-list">
+            <div class="side-menu__footer-links">
+              <ul class="side-menu__footer-list">
+                <li class="side-menu__footer-item">
+                  <a class="side-menu__footer-link" href="#">About</a>
+                </li>
+                <li class="side-menu__footer-item">
+                  <a class="side-menu__footer-link" href="#">Help</a>
+                </li>
+                <li class="side-menu__footer-item">
+                  <a class="side-menu__footer-link" href="#">Press</a>
+                </li>
+                <li class="side-menu__footer-item">
+                  <a class="side-menu__footer-link" href="#">API</a>
+                </li>
+                <li class="side-menu__footer-item">
+                  <a class="side-menu__footer-link" href="#">Jobs</a>
+                </li>
+                <li class="side-menu__footer-item">
+                  <a class="side-menu__footer-link" href="#">Privacy</a>
+                </li>
+                <li class="side-menu__footer-item">
+                  <a class="side-menu__footer-link" href="#">Terms</a>
+                </li>
+                <li class="side-menu__footer-item">
+                  <a class="side-menu__footer-link" href="#">Locations</a>
+                </li>
+                <li class="side-menu__footer-item">
+                  <a class="side-menu__footer-link" href="#">Top Accounts</a>
+                </li>
+                <li class="side-menu__footer-item">
+                  <a class="side-menu__footer-link" href="#">Hashtag</a>
+                </li>
+                <li class="side-menu__footer-item">
+                  <a class="side-menu__footer-link" href="#">Language</a>
+                </li>
+              </ul>
+            </div>
+            <span class="side-menu__footer-copyright">© 2021 instagram from facebook</span>
+        </div>
+      </section>
+  </section>
+</main>

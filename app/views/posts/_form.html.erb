@@ -1,25 +1,31 @@
-<%= form_with(model: post, local: true) do |form| %>
-  <% if post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+<div class="text-center">
+  <br>
+  <br>
+    <%= form_with(model: post, local: true) do |form| %>
+      <% if post.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
-      <ul>
-        <% post.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+          <ul>
+            <% post.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    <div class="mb-3">
+      <%= form.label :description, class:"form-label" %>
+      <%= form.text_field :description, class:"form-control", placeholder:"description" %>
     </div>
-  <% end %>
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
-  </div>
-  <div class="field">
-    <%= form.label "Image" %>
-    <%= form.file_field :post_image %> <br>
-  </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+    <div class="mb-3">
+      <%= form.label "Image", for:"formfile", class:"form-label" %>
+      <%= form.file_field :post_image, class:"form-control", type:"file", id: "formfile" %> <br>
+    </div>
+
+    <div class="actions">
+        <%= form.submit %>
+    </div>
+      <br> 
+    <% end %>
+</div>
