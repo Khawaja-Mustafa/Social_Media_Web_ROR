@@ -20,7 +20,6 @@
     </div> -->
   </div>
   <div class="col-md-10 bg-dark text-light">
-    The chat box stays here
       <% if @single_room %>
         <h4 class="text-center"> <%= @account&.username || @single_room.name %> </h4>
         <%= turbo_stream_from @single_room %>
