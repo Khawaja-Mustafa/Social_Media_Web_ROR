@@ -3,7 +3,7 @@ class Room < ApplicationRecord
   after_create_commit { broadcast_if_public }
   after_create_commit {broadcast_append_to "rooms"}
   def broadcast_if_public
-  broadcast_append_to "rooms" unless self.is_private
+    broadcast_append_to "rooms" unless self.is_private
   end
 
   def self.create_private_room(accounts, room_name)
