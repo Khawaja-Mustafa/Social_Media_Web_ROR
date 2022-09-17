@@ -14,7 +14,7 @@ class FriendshipsController < ApplicationController
     @friendship = current_account.friendships.find(params[:id])
     @friendship.destroy
     flash[:notice] = "Removed friendship."
-    redirect_to current_account
+    redirect_to profile_account_path(current_account)
   end
 
 end
