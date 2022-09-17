@@ -8,6 +8,19 @@
   <% end %>
   <br>
   <strong><%= @post.account.username %>:</strong> <%= @post.description %>
+  <br>
+
+  <div class="align-text-left">
+    <h4>Comments:</h4>
+    <% @comments.each do |comment| %>
+            <%if  @post.id == comment.post_id%>
+              <strong><%= comment.account.username %>:</strong> <%= comment.user_comment %>
+              <br>
+            <%else%>
+
+           <%end%>
+    <% end %>
+  </div>
 
   <br><br>
 <%= link_to 'Edit', edit_post_path(@post), class:"btn btn-outline-secondary" %> |

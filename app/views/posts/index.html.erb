@@ -11,7 +11,7 @@
                   <div class="post__header">
                       <div class="post__profile">
                         <a class="post__avatar"> <img src="assets/default-user.png" alt="User Picture"></a>
-                          <%= link_to post.account.username, account_path(post.account_id), class:"post__user"%>
+                          <%= link_to post.account.username, profile_account_path(post.account_id), class:"post__user"%>
                       </div>
                       <div class="post__more-options">
                           <div class="btn-group dropend" style="background: none; color: black; border: none;">
@@ -70,7 +70,7 @@
                       </div>
                       <div class="post__description">
                         <span>
-                          <%= link_to post.account.username, account_path(post.account_id), class:"post__name--underline"%>
+                          <%= link_to post.account.username, profile_account_path(post.account_id), class:"post__name--underline"%>
                           <%= post.description %>
                         </span>
                       </div>
@@ -80,7 +80,17 @@
                         <div class="comment__footer">
                           <div class="comment__foot">
 
+                      
+
+
                            <!-- Have to somehow render the form here -->
+
+
+
+
+
+
+
                            
                              <input type="comment" class="form-hell" placeholder="comment">
                           </div>

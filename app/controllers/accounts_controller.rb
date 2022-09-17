@@ -7,6 +7,10 @@ class AccountsController < ApplicationController
   #   @account = Account.find(params[:id])
   #   @current_account = current_account
   # end
+  def profile
+    @account = Account.find(params[:id])
+    @current_account = current_account
+  end
 
   def show
     @account = Account.find(params[:id])
