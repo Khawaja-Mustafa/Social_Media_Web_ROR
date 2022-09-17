@@ -1,3 +1,4 @@
+<br><br><br>
 <div class="row">
   <div class="col-md-2">
     <h5> Hi <%= @current_account.username %> </h5>
@@ -8,22 +9,25 @@
     </div>
   </div>
      <h4> Rooms </h4>
-    
     <%= render partial: "layouts/new_room_form" %>
   
     <%= turbo_stream_from "rooms" %>
     <div id="rooms">
-      <%= render @rooms %>
+      <br>
+      <h4>Available Rooms: </h4>
+        <%= render @rooms %>
+      <br>
     </div>
   </div>
   <div class="col-md-10 bg-dark">
     The chat box stays here
       <% if @single_room %>
-        <h4 class="text-center"> <%= @account&.username || @single_room.name %> </h4>
+        <h4 class="text-center"> <%= @accounts&.username || @single_room.name %> </h4>
         <%= turbo_stream_from @single_room %>
         <div id="messages"> <%= render @messages %>
  </div>
         <%= render partial: 'layouts/new_message_form' %>
       <% end %>
   </div>
+  <br>
 </div>
