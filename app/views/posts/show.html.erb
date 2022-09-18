@@ -14,17 +14,19 @@
     <h4>Comments:</h4>
     <% @comments.each do |comment| %>
             <%if  @post.id == comment.post_id%>
-              <strong><%= comment.account.username %>:</strong> <%= comment.user_comment %>
+              <strong><%= comment.account.username %>:</strong> <%= comment.user_comment %> 
+              <%= button_to "delete", post_comment_path(@post.id, comment.id), method: :delete, data: {confirm: 'are you sure?'} %>
               <br>
             <%else%>
 
            <%end%>
     <% end %>
   </div>
-
-  <br><br>
+  <br>
+<%= render partial: "comments/form", locals: {post: @post, comment: Comment.new}%>
+  <br>
 <%= link_to 'Edit', edit_post_path(@post), class:"btn btn-outline-secondary" %> |
-<%= link_to 'Back', posts_path, class:"btn btn-outline-danger" %> | 
-<%= link_to 'comment', new_post_comment_path(@post), class:"btn btn-outline-dark"%>
+<%= link_to 'Back', posts_path, class:"btn btn-outline-danger" %>
+<br>
 </div>
 

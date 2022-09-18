@@ -1,7 +1,8 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[ show edit update destroy ]
   # before_action :set_account
-  # before_action :set_post
+  # before_action :set_post, only: %i[ destroy ]
+
 
   # GET /comments or /comments.json
   def index
@@ -50,13 +51,14 @@ class CommentsController < ApplicationController
 
   # DELETE /comments/1 or /comments/1.json
   def destroy
+    @post = Post.find(params[:post_id])
     @comment.destroy
-
     respond_to do |format|
-      format.html { redirect_to comments_url, notice: "Comment was successfully destroyed." }
+      format.html { redirect_to @post, notice: "Comment was successfully destroyed." }
       format.json { head :no_content }
     end
   end
+
 
   private
     # def set_post

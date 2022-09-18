@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   resources :posts do
     resources :comments
+      # get 'comments/:id/destroy' => 'comments#destroy', as: 'comment_destroy'
   end
 
   # resources :posts

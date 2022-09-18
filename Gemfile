@@ -54,6 +54,12 @@ gem 'cancancan', '~> 3.4'
 # RuboCop is a Ruby code style checking and code formatting tool. It aims to enforce the community-driven Ruby Style Guide.
 gem 'rubocop', '~> 1.36'
 
+# Rails community to implement advanced search capability in a Ruby on Rails application
+gem 'ransack'
+
+
+
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 

@@ -58,7 +58,7 @@
                               <i class="fa fa-thumbs-up">Like</i>
                           <% end %>
                         <% end %>
-                        <button class="post__button">Comment</button>
+                        <%= link_to "Comment", post, class:"post__button", style:"text-decoration:none; color:black;"%>
                         <button class="post__button">Share</button>
                       <div class="post__indicators">
                       </div>
@@ -79,22 +79,8 @@
                       <section>
                         <div class="comment__footer">
                           <div class="comment__foot">
-
-                      
-
-
-                           <!-- Have to somehow render the form here -->
-
-
-
-
-
-
-
-                           
-                             <input type="comment" class="form-hell" placeholder="comment">
+                            <%= render partial: "comments/form", locals: {post: post, comment: Comment.new}%>
                           </div>
-                            <button class="btn btn-secondary">submit</button>
                         </div>
                       </section>
                     </div>
@@ -175,7 +161,7 @@
           </div>
           </div>
         </div>
-        <div class="side-menu__footer-list">
+        <div class="side-menu__footer">
             <div class="side-menu__footer-links">
               <ul class="side-menu__footer-list">
                 <li class="side-menu__footer-item">
