@@ -57,7 +57,6 @@ class PostsController < ApplicationController
   def destroy
     # yeh add kia sath format.js
     @post.destroy
-
     respond_to do |format|
       format.html { redirect_to posts_url, notice: "Post was successfully destroyed." }
       format.json { head :no_content }
@@ -65,14 +64,6 @@ class PostsController < ApplicationController
     end
   end
 
-  # def like
-  #   #grabbing the post
-  #   @post = Post.all.find(params[:id])
-  #   #creating a like with that post and the current user's id
-  #   Like.create(account_id: current_account.id, post_id: @post.id)
-  #   #redirecting them bach to that post
-  #   redirect_to posts_path(@post)
-  # end
 
   # This will show the name of the user who owns the post
   def show_profile
