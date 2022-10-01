@@ -1,0 +1,13 @@
+<br><br><br>
+<% if current_account == @account%>
+	<br>
+	<h2>Followers</h2>
+	<ul>
+	  <% for account in @account.inverse_friends %>
+	    <li><%=h account.username %></li>
+	  <% end %>
+	</ul>
+
+<%else%>
+<%end%>
+

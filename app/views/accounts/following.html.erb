@@ -1,0 +1,19 @@
+<br><br><br>
+<% if current_account == @account%>
+	<table class="center">
+		<tr>
+			<th><h2>Friends List</h2></th>
+		</tr>
+		<tr>
+			<% for friendship in @account.friendships %>
+			<td>
+				<%=friendship.friend.username %>
+			</td>
+			<td>
+				<%= button_to "remove", friendship, :method => :delete %>
+			</td>
+			<% end %>
+		</tr>
+	</table>
+<%else%>
+<%end%>

@@ -8,6 +8,16 @@ class AccountsController < ApplicationController
     @current_account = current_account
   end
 
+  def following
+    @account = Account.find(params[:id])
+    @current_account = current_account
+  end
+
+  def follower
+    @account = Account.find(params[:id])
+    @current_account = current_account
+  end
+
   def show
     @account = Account.find(params[:id])
     @current_account = current_account

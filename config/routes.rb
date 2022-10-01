@@ -24,6 +24,8 @@ Rails.application.routes.draw do
     # get 'accounts/:id/profile' => 'accounts#profile', as: 'profile'
     member do
       get :profile
+      get :follower
+      get :following
     end
   end
 
